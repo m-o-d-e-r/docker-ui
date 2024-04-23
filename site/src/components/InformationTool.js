@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_URL } from '../utils/config';
+
 
 function InformationTool() {
   const [dockerInfo, setDockerInfo] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/info/docker')
+    axios.get(`${API_URL}/info/docker`)
       .then(function (response) {
         setDockerInfo(response.data);
       })
