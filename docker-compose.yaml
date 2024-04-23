@@ -9,15 +9,26 @@ services:
       dockerfile: ./Dockerfile.api.yaml
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    env_file:
-      - .env
+    expose:
+      - $API_HOST
+    networks:
+      - docker-ui
+    environment:
+      - API_DEBUG=$API_DEBUG
+      - API_HOST=$API_HOST
+      - API_PORT=$API_PORT
 
   docker-ui-site:
     container_name: docker-ui-site
     build:
       context: .
       dockerfile: ./Dockerfile.site.yaml
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    env_file:
-      - .env
+    ports:
+      - "80:80"
+    networks:
+      - docker-ui
+    environment:
+      - SITE_API_HOST="docker-ui-api:$API_PORT"
+
+networks:
+  docker-ui:

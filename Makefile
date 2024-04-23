@@ -1,6 +1,6 @@
 
 run:
-	docker compose -f docker-compose.yaml up --build
+	docker compose --env-file .env up --build
 
 run_dev:
-	docker compose -f docker-compose.dev.yaml up --build
+	docker compose --env-file .env.dev up --build
