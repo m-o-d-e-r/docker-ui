@@ -9,8 +9,8 @@ services:
       dockerfile: ./Dockerfile.api.yaml
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    expose:
-      - $API_HOST
+    ports:
+      - "8080:$API_HOST"
     networks:
       - docker-ui
     environment:
@@ -28,7 +28,7 @@ services:
     networks:
       - docker-ui
     environment:
-      - SITE_API_HOST="docker-ui-api:$API_PORT"
+      - REACT_APP_API_HOST=$REACT_APP_API_HOST
 
 networks:
   docker-ui:

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ImagesTool.css'
+import { API_URL } from '../utils/config';
 
 
 function ImagesTool() {
   const [imagesList, setImagesList] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/images/list')
+    axios.get(`${API_URL}/images/list`)
       .then(function (response) {
         setImagesList(response.data["images_list"]);
       })
@@ -25,7 +26,7 @@ function ImagesTool() {
     }
 
     axios.post(
-      'http://localhost:8000/images/pull',
+      `${API_URL}:8000/images/pull`,
       {
         "repository": imageRepo,
         "tag": imageTag

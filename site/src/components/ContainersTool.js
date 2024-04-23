@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ContainersTool.css';
+import { API_URL } from '../utils/config';
 
 
 function ContainersTool() {
@@ -8,7 +9,7 @@ function ContainersTool() {
 
   useEffect(() => {
     axios.post(
-      'http://localhost:8000/containers/list'
+      `${API_URL}/containers/list`
     )
       .then(function (response) {
         setContainersList(response.data["containers_list"]);
