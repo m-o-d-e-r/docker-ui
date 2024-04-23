@@ -1,0 +1,15 @@
+html {
+  background-color: #19B7BD;
+  color: #FAF7EE;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

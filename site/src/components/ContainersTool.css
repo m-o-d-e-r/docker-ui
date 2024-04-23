@@ -1,0 +1,17 @@
+.containerstool-container {
+    width: 100%;
+}
+
+.containers-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.containers-table-row {
+    border-top: 1px solid #ccc;
+}
+
+.containers-table td {
+    padding: 10px;
+    text-align: left;
+}

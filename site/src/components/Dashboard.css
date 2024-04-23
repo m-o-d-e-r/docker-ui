@@ -1,0 +1,41 @@
+
+.dashboard-container {
+    background-color: #072A40;
+    padding: 10px;
+    flex: 1;
+}
+
+.dashboard-inner {
+    width: 70%;
+    height: inherit;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.dashboard-menu {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    padding-right: 50px;
+    border-right: 1px solid #FAF7EE;
+}
+
+.dashboard-item {
+    color: #FAF7EE;
+    text-decoration: none;
+    margin: 7px 0;
+    transition: .2s;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.dashboard-item:hover {
+    transform: translate(10px) scale(1.1);
+}
+
+
+.tool-area {
+    width: 100%;
+    padding: 10px 30px;
+}
