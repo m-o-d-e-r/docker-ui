@@ -10,7 +10,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "8080:$API_HOST"
+      - "8080:$API_PORT"
     networks:
       - docker-ui
     environment:
