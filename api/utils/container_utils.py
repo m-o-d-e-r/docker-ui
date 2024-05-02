@@ -50,6 +50,12 @@ def stop_container(container_id: str) -> dict:
     return container2dict(container)
 
 
+def start_container(container_id: str) -> dict:
+    container = get_container_by_id(container_id)
+    container.start()
+    return container2dict(container)
+
+
 def remove_container(container_id: str) -> dict:
     container = get_container_by_id(container_id)
     container.remove()

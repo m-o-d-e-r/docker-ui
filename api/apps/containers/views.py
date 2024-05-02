@@ -4,6 +4,7 @@ from api.utils.container_utils import (
     get_container_list,
     run_container,
     stop_container,
+    start_container,
     remove_container,
     get_container_info_by_id
 )
@@ -39,6 +40,14 @@ async def containers__stop_container(container_meta: ContainerIDSchema):
     return JSONResponse(
         content={
             "container_info": stop_container(container_meta.container_id)
+        }
+    )
+
+
+async def containers__start_container(container_meta: ContainerIDSchema):
+    return JSONResponse(
+        content={
+            "container_info": start_container(container_meta.container_id)
         }
     )
 

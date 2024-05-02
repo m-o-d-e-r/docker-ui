@@ -98,6 +98,18 @@ function ContainersTool(props) {
     });
   }
 
+  function startContainer(container_id) {
+    axios.post(
+      `${API_URL}/containers/start`,
+      {
+        "container_id": container_id
+      }
+    ).then(function (response) {
+      getContainers();
+    }).catch(function (error) {
+      console.log(error);
+    });
+  }
 
   return (
     <div className="containerstool-container">
@@ -160,7 +172,7 @@ function ContainersTool(props) {
                       <UpdateButton
                         defaultImage={shutdown_icon}
                         hoverImage={shutdown_icon_active_green}
-                        onClick={() => stopContainer(container.container_id)}
+                        onClick={() => startContainer(container.container_id)}
                         style={{ width: "35px", margin: "0", padding: "0", position: "relative" }}
                       />
                     }
