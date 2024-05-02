@@ -6,6 +6,8 @@ from api.apps.containers.router import containers_router
 from api.apps.info.router import info_router
 from api.apps.images.router import images_router
 
+from api.utils.exception_handler import main_exception_handler
+
 
 app = FastAPI()
 app.add_middleware(
@@ -19,6 +21,8 @@ app.add_middleware(
 app.include_router(containers_router, prefix="/containers")
 app.include_router(info_router, prefix="/info")
 app.include_router(images_router, prefix="/images")
+
+app.add_exception_handler(Exception, main_exception_handler)
 
 
 if __name__ == "__main__":
