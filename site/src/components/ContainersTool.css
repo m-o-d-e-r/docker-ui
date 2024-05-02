@@ -29,3 +29,16 @@
     padding: 10px;
     text-align: left;
 }
+
+.container-status-label {
+    width: 80%;
+    border-radius: 5px;
+    margin: 0 auto;
+    text-align: center;
+    color: #072A40
+}
+
+.container-control-buttons {
+    display: flex;
+    justify-content: center;
+}

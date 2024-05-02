@@ -5,9 +5,25 @@ import { API_URL } from '../utils/config';
 import UpdateButton from './UpdateButtonCallback';
 import update_icon from '../assets/icon-update.png';
 import update_icon_active from '../assets/icon-update-active.png';
+import remove_icon from '../assets/icon-remove.png';
+import remove_icon_active from '../assets/icon-remove-active.png';
+import shutdown_icon from '../assets/icon-shutdown.png';
+import shutdown_icon_active_red from '../assets/icon-shutdown-active-red.png';
+import shutdown_icon_active_green from '../assets/icon-shutdown-active-green.png';
 
 
-function ContainersTool() {
+const ContainerStatusRunning = "running";
+
+const ContainerStatuses = {
+  "restarting": "#6FA8DC",
+  "running": "#ACEC1C",
+  "paused": "#EE9F62",
+  "exited": "#FF1100"
+};
+
+
+
+function ContainersTool(props) {
   const [containersList, setContainersList] = useState(null);
 
   function getContainers() {
@@ -52,13 +68,44 @@ function ContainersTool() {
     });
   }
 
+
+  function removeContainer(container_id) {
+    axios.delete(
+      `${API_URL}/containers/remove`,
+      {
+        data: {
+          "container_id": container_id
+        }
+      }
+    ).then(function (response) {
+      getContainers();
+    }).catch(function (error) {
+      console.log(error);
+    });
+  }
+
+
+  function stopContainer(container_id) {
+    axios.post(
+      `${API_URL}/containers/stop`,
+      {
+        "container_id": container_id
+      }
+    ).then(function (response) {
+      getContainers();
+    }).catch(function (error) {
+      console.log(error);
+    });
+  }
+
+
   return (
     <div className="containerstool-container">
       <UpdateButton
         defaultImage={update_icon}
         hoverImage={update_icon_active}
         onClick={getContainers}
-        style={{width: "35px"}}
+        style={{ width: "35px" }}
       />
       <div className="containers-creation-container">
         <input className="containers-form-item" type="text" placeholder="Image name" id="container-image-id" />
@@ -87,7 +134,38 @@ function ContainersTool() {
                 <td>{container.container_id}</td>
                 <td>{container.name}</td>
                 <td>{container.image}</td>
-                <td>{container.status}</td>
+                <td>
+                  <div className="container-status-label" style={{ ...props.style, backgroundColor: ContainerStatuses[container.status] }}>
+                    {container.status}
+                  </div>
+                </td>
+                <td className="container-control-buttons">
+                  <div>
+                    <UpdateButton
+                      defaultImage={remove_icon}
+                      hoverImage={remove_icon_active}
+                      onClick={() => removeContainer(container.container_id)}
+                      style={{ width: "35px", margin: "0", padding: "0", position: "relative" }}
+                    />
+                  </div>
+                  <div>
+                    {
+                      container.status === ContainerStatusRunning ?
+                      <UpdateButton
+                        defaultImage={shutdown_icon}
+                        hoverImage={shutdown_icon_active_red}
+                        onClick={() => stopContainer(container.container_id)}
+                        style={{ width: "35px", margin: "0", padding: "0", position: "relative" }}
+                      /> :
+                      <UpdateButton
+                        defaultImage={shutdown_icon}
+                        hoverImage={shutdown_icon_active_green}
+                        onClick={() => stopContainer(container.container_id)}
+                        style={{ width: "35px", margin: "0", padding: "0", position: "relative" }}
+                      />
+                    }
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>

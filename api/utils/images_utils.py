@@ -1,3 +1,5 @@
+from fastapi import HTTPException
+
 from docker.models.images import Image
 
 from api.utils.docker_utils import get_docker_client
@@ -25,7 +27,13 @@ def pull_image(filters: PullImageSchema) -> dict:
 
 
 def remove_image(image_id: str):
-    get_docker_client().images.remove(image=image_id)
+    try:
+        get_docker_client().images.remove(image=image_id)
+    except Exception as exc:
+        raise HTTPException(
+            status_code=403,
+            detail=str(exc)
+        ) from exc
 
 
 def prune_images() -> dict:

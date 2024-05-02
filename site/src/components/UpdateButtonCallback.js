@@ -9,10 +9,10 @@ function UpdateButton(props) {
       <img
         src={hovered ? props.hoverImage : props.defaultImage}
         style={{
-          ...props.style,
           cursor: 'pointer',
           right: "0px",
-          position: "absolute"
+          position: "absolute",
+          ...props.style,
         }}
         onClick={props.onClick}
         onMouseEnter={() => setHovered(true)}
