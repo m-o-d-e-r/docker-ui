@@ -13,3 +13,17 @@ html {
   display: flex;
   flex-direction: column;
 }
+
+.green-button {
+  cursor: pointer;
+  background-color: #49CC90;
+  border: none;
+  color: #FAF7EE;
+  font-weight: 600;
+  transition: .1s;
+  padding: 5px 10px;
+}
+
+.green-button:hover {
+  transform: scale(1.1);
+}

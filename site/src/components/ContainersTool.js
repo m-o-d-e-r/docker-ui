@@ -2,12 +2,16 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ContainersTool.css';
 import { API_URL } from '../utils/config';
+import UpdateButton from './UpdateButtonCallback';
+import update_icon from '../assets/icon-update.png';
+import update_icon_active from '../assets/icon-update-active.png';
 
 
 function ContainersTool() {
   const [containersList, setContainersList] = useState(null);
 
-  useEffect(() => {
+  function getContainers() {
+    setContainersList(null);
     axios.post(
       `${API_URL}/containers/list`
     )
@@ -17,36 +21,81 @@ function ContainersTool() {
       .catch(function (error) {
         console.log(error);
       });
+  }
+
+  useEffect(() => {
+    getContainers();
   }, []);
 
-  return (
-<div class="containerstool-container">
-  {containersList ? (
-    <table class="containers-table">
-      <thead>
-        <tr>
-          <td>Container ID</td>
-          <td>Name</td>
-          <td>Image</td>
-          <td>Status</td>          
-        </tr>
-      </thead>
-      <tbody>
-        {containersList.map((container, index) => (
-          <tr className="containers-table-row" key={index}>
-            <td>{container.container_id}</td>
-            <td>{container.name}</td>
-            <td>{container.image}</td>
-            <td>{container.status}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  ) : (
-    <div>Loading...</div>
-  )}
-</div>
+  function runContainer() {
+    const container_image_id = document.getElementById("container-image-id").value;
+    const container_image_name = document.getElementById("container-name").value;
+    const container_image_command = document.getElementById("container-command").value;
+    const container_auto_remove = document.getElementById("container-auto-remove").checked;
 
+    if (container_image_id === "") {
+      // alert
+    }
+
+    axios.post(
+      `${API_URL}/containers/run`,
+      {
+        "image": container_image_id,
+        "name": container_image_name,
+        "command": container_image_command,
+        "auto_remove": container_auto_remove
+      }
+    ).then(function (response) {
+      getContainers();
+    }).catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  return (
+    <div className="containerstool-container">
+      <UpdateButton
+        defaultImage={update_icon}
+        hoverImage={update_icon_active}
+        onClick={getContainers}
+        style={{width: "35px"}}
+      />
+      <div className="containers-creation-container">
+        <input className="containers-form-item" type="text" placeholder="Image name" id="container-image-id" />
+        <input className="containers-form-item" type="text" placeholder="Container name" id="container-name" />
+        <input className="containers-form-item" type="text" placeholder="Command" id="container-command" />
+        <div style={{ textAlign: "center" }}>
+          <label className="containers-form-item" htmlFor="container-auto-remove">Remove container after it's done</label>
+          <input className="containers-form-item" type="checkbox" placeholder="" id="container-auto-remove" />
+        </div>
+        <button className="green-button" style={{ margin: "10px" }} onClick={runContainer}>Run container</button>
+      </div>
+
+      {containersList ? (
+        <table className="containers-table">
+          <thead>
+            <tr>
+              <td>Container ID</td>
+              <td>Name</td>
+              <td>Image</td>
+              <td>Status</td>
+            </tr>
+          </thead>
+          <tbody>
+            {containersList.map((container, index) => (
+              <tr className="containers-table-row" key={index}>
+                <td>{container.container_id}</td>
+                <td>{container.name}</td>
+                <td>{container.image}</td>
+                <td>{container.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <div>Loading...</div>
+      )}
+    </div>
   );
 }
 

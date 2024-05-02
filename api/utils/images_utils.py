@@ -35,9 +35,6 @@ def prune_images() -> dict:
         }
     )
     return {
-        "deleted_images": [
-            image2dict(image_obj) for image_obj in
-            result["ImagesDeleted"]
-        ],
+        "deleted_images": result["ImagesDeleted"],
         "space_reclaimed": result["SpaceReclaimed"]
     }
