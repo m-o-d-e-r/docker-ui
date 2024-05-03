@@ -6,6 +6,7 @@ from api.apps.containers.router import containers_router
 from api.apps.info.router import info_router
 from api.apps.images.router import images_router
 from api.apps.networks.router import networks_router
+from api.apps.volumes.router import volumes_router
 
 from api.utils.exception_handler import main_exception_handler
 
@@ -23,6 +24,7 @@ app.include_router(containers_router, prefix="/containers")
 app.include_router(info_router, prefix="/info")
 app.include_router(images_router, prefix="/images")
 app.include_router(networks_router, prefix="/networks")
+app.include_router(volumes_router, prefix="/volumes")
 
 app.add_exception_handler(Exception, main_exception_handler)
 
