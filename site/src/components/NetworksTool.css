@@ -1,0 +1,8 @@
+
+.network-creation-area {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 30px auto;
+}

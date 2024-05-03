@@ -119,13 +119,13 @@ function ContainersTool(props) {
         onClick={getContainers}
         style={{ width: "35px" }}
       />
-      <div className="containers-creation-container">
-        <input className="containers-form-item" type="text" placeholder="Image name" id="container-image-id" />
-        <input className="containers-form-item" type="text" placeholder="Container name" id="container-name" />
-        <input className="containers-form-item" type="text" placeholder="Command" id="container-command" />
+      <div className="object-creation-form-area">
+        <input className="object-creation-item" type="text" placeholder="Image name" id="container-image-id" />
+        <input className="object-creation-item" type="text" placeholder="Container name" id="container-name" />
+        <input className="object-creation-item" type="text" placeholder="Command" id="container-command" />
         <div style={{ textAlign: "center" }}>
-          <label className="containers-form-item" htmlFor="container-auto-remove">Remove container after it's done</label>
-          <input className="containers-form-item" type="checkbox" placeholder="" id="container-auto-remove" />
+          <label className="object-creation-item" htmlFor="container-auto-remove">Remove container after it's done</label>
+          <input className="object-creation-item" type="checkbox" placeholder="" id="container-auto-remove" />
         </div>
         <button className="green-button" style={{ margin: "10px" }} onClick={runContainer}>Run container</button>
       </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Dashboard.css';
 import ImagesTool from './ImagesTool';
 import ContainersTool from './ContainersTool';
-import NetworkTool from './NetworksTool';
+import NetworksTool from './NetworksTool';
 import VolumesTool from './VolumesTool';
 import InformationTool from './InformationTool';
 
@@ -21,7 +21,7 @@ function Dashboard() {
             case 'containers':
                 return <ContainersTool />;
             case 'networks':
-                return <NetworkTool />;
+                return <NetworksTool />;
             case 'volumes':
                 return <VolumesTool />;
             case 'information':

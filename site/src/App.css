@@ -16,7 +16,7 @@ html {
 
 .green-button {
   cursor: pointer;
-  background-color: #49CC90;
+  background-color: #209661;
   border: none;
   color: #FAF7EE;
   font-weight: 600;
@@ -25,5 +25,42 @@ html {
 }
 
 .green-button:hover {
-  transform: scale(1.1);
+  background-color: #49CC90;
+}
+
+.prune-items-container {
+  padding: 20px;
+  display: flex;
+}
+
+.prune-items-button {
+  cursor: pointer;
+  background-color: rgb(180, 20, 20);
+  color: white;
+  border: none;
+  padding: 1px 10px;
+  transition: .2s;
+  margin-left: 20px;
+  font-size: 20px;
+  align-items: center;
+  display: flex;
+  border-radius: 5px;
+}
+
+.prune-items-button:hover {
+  background-color: rgb(212, 15, 15);
+}
+
+.object-creation-form-area {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.object-creation-item {
+  padding: 5px 10px;
+  text-align: center;
+  margin: 5px;
 }

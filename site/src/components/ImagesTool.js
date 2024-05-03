@@ -6,6 +6,8 @@ import iconWarning from '../assets/icon-warning.png';
 import UpdateButton from './UpdateButtonCallback';
 import update_icon from '../assets/icon-update.png';
 import update_icon_active from '../assets/icon-update-active.png';
+import remove_icon from '../assets/icon-remove.png';
+import remove_icon_active from '../assets/icon-remove-active.png';
 
 
 function ImagesTool() {
@@ -79,16 +81,21 @@ function ImagesTool() {
         <input type="text" placeholder="Enter repository" id="repository-entry" />
         <button className="green-button" onClick={pullImage}>Pull image</button>
       </div>
-      <div className="prune-images-container">
+      <div className="prune-items-container">
         <img src={iconWarning} title="Clicking this button you will remove unused images" />
-        <div className="prune-images-button" onClick={pruneImages}>Prune images</div>
+        <div className="prune-items-button" onClick={pruneImages}>Prune images</div>
       </div>
 
       {imagesList ? (
         <ul className="images-list-container">
           {imagesList.map((image, index) => (
             <li className="images-list-item" key={index}>
-              <img className="images-list-img" title="Remove image" onClick={() => removeImage(image.image_id)} />
+              <UpdateButton
+                defaultImage={remove_icon}
+                hoverImage={remove_icon_active}
+                onClick={() => removeImage(image.image_id)}
+                style={{width: "30px", position: "relative"}}
+              />
               <div className="images-list-description">
                 <p>{image.tags.length ? image.tags : '<none>'}</p>
                 <p>{image.image_id}</p>
