@@ -13,35 +13,8 @@
     padding: 5px 10px;
     margin: 0 10px;
     border: none;
-}
-
-#repository-entry {
     text-align: center;
 }
-
-.prune-images-container {
-    padding: 20px;
-    display: flex;
-}
-
-.prune-images-button {
-    cursor: pointer;
-    background-color: rgb(180, 20, 20);
-    color: white;
-    border: none;
-    padding: 1px 10px;
-    transition: .2s;
-    margin-left: 20px;
-    font-size: 20px;
-    align-items: center;
-    display: flex;
-    border-radius: 5px;
-}
-
-.prune-images-button:hover {
-    background-color: rgb(212, 15, 15);
-}
-
 
 .images-list-container {
     list-style: none;
@@ -51,6 +24,7 @@
     cursor: pointer;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border: 1px solid #188CA5;
     border-radius: 15px;
     padding: 5px 10px;
@@ -60,15 +34,6 @@
 
 .images-list-item:hover {
     border: 1px solid red;
-}
-
-.images-list-img {
-    height: 30px;
-    content: url("../assets/icon-remove.png");
-}
-
-.images-list-img:hover {
-    content: url("../assets/icon-remove-active.png");
 }
 
 .images-list-description {

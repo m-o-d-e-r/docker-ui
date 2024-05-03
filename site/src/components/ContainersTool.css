@@ -2,20 +2,6 @@
     width: 100%;
 }
 
-.containers-creation-container {
-    width: 70%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 50px;
-}
-
-.containers-form-item {
-    padding: 5px 10px;
-    text-align: center;
-    margin: 5px;
-}
-
 .containers-table {
     width: 100%;
     border-collapse: collapse;
