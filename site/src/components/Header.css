@@ -36,5 +36,9 @@
 }
 
 .navbar-item:hover {
+    background-color: #093f61;
+}
+
+.navbar-item-active {
     background-color: #072A40;
 }
