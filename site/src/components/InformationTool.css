@@ -1,0 +1,20 @@
+
+.information-list {
+    width: 60%;
+    margin: 0 auto;
+    list-style: none;
+}
+
+.information-list > li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: inherit;
+    border-top: 1px solid #FAF7EE;
+    margin: 10px 0;
+    padding: 3px 0;
+}
+
+.information-list b {
+    font-weight: 500;
+}

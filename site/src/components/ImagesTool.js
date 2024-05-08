@@ -33,7 +33,8 @@ function ImagesTool() {
     if (repositoryEntry && repositoryEntry.value) {
       var [imageRepo, imageTag] = repositoryEntry.value.split(":");
     } else {
-      console.error("Repository entry is missing or empty.");
+      alert("Enter image name");
+      return;
     }
 
     axios.post(
@@ -77,8 +78,8 @@ function ImagesTool() {
         onClick={getImages}
         style={{width: "35px"}}
       />
-      <div className="image-pulling-area">
-        <input type="text" placeholder="Enter repository" id="repository-entry" />
+      <div className="object-creation-form-area">
+        <input className="object-creation-item" type="text" placeholder="Enter repository" id="repository-entry" required />
         <button className="green-button" onClick={pullImage}>Pull image</button>
       </div>
       <div className="prune-items-container">
@@ -87,16 +88,16 @@ function ImagesTool() {
       </div>
 
       {imagesList ? (
-        <ul className="images-list-container">
+        <ul className="objects-list-container">
           {imagesList.map((image, index) => (
-            <li className="images-list-item" key={index}>
+            <li className="objects-list-item" key={index}>
               <UpdateButton
                 defaultImage={remove_icon}
                 hoverImage={remove_icon_active}
                 onClick={() => removeImage(image.image_id)}
                 style={{width: "30px", position: "relative"}}
               />
-              <div className="images-list-description">
+              <div className="objects-list-info">
                 <p>{image.tags.length ? image.tags : '<none>'}</p>
                 <p>{image.image_id}</p>
               </div>

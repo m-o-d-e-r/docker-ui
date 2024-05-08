@@ -1,11 +1,11 @@
 from fastapi.responses import JSONResponse
-from fastapi import Request, HTTPException
+from fastapi import Request
 
 
-async def main_exception_handler(request: Request, exc: HTTPException):
+async def main_exception_handler(request: Request, exc: Exception):
     return JSONResponse(
         content={
-            "hello": str(exc),
+            "detail": str(exc),
         },
         status_code=exc.status_code
     )

@@ -4,6 +4,16 @@
 }
 
 .about-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 70%;
     margin: 0 auto;
+    text-align: center;
+    min-height: 50vh;
+}
+
+.block-info {
+    margin-top: 20px;
 }

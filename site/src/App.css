@@ -14,19 +14,7 @@ html {
   flex-direction: column;
 }
 
-.green-button {
-  cursor: pointer;
-  background-color: #209661;
-  border: none;
-  color: #FAF7EE;
-  font-weight: 600;
-  transition: .1s;
-  padding: 5px 10px;
-}
 
-.green-button:hover {
-  background-color: #49CC90;
-}
 
 .prune-items-container {
   padding: 20px;
@@ -51,16 +39,63 @@ html {
   background-color: rgb(212, 15, 15);
 }
 
+
+
 .object-creation-form-area {
   width: 70%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   margin-bottom: 50px;
+  justify-content: center;
 }
 
-.object-creation-item {
+.object-creation-item,
+.green-button {
   padding: 5px 10px;
   text-align: center;
   margin: 5px;
+  width: 100%;
+  border: none;
+  box-sizing: border-box;
 }
+
+.green-button {
+  cursor: pointer;
+  background-color: #209661;
+  color: #FAF7EE;
+}
+
+.green-button:hover {
+  background-color: #49CC90;
+}
+
+
+
+.objects-list-container {
+  list-style: none;
+}
+
+.objects-list-item {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #188CA5;
+  border-radius: 15px;
+  padding: 5px 10px;
+  margin: 10px;
+  transition: .1s;
+}
+
+.objects-list-item:hover {
+  border: 1px solid red;
+}
+
+.objects-list-info {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  width: 100%;
+}
+

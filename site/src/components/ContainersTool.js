@@ -44,21 +44,27 @@ function ContainersTool(props) {
   }, []);
 
   function runContainer() {
-    const container_image_id = document.getElementById("container-image-id").value;
-    const container_image_name = document.getElementById("container-name").value;
-    const container_image_command = document.getElementById("container-command").value;
+    const container_image_name = document.getElementById("container-image-name").value;
+    const container_name = document.getElementById("container-name").value;
+    const container_command = document.getElementById("container-command").value;
     const container_auto_remove = document.getElementById("container-auto-remove").checked;
 
-    if (container_image_id === "") {
-      // alert
+    if (container_image_name === "") {
+      alert("Enter image");
+      return;
+    }
+
+    if (container_name === "") {
+      alert("Enter container name");
+      return;
     }
 
     axios.post(
       `${API_URL}/containers/run`,
       {
-        "image": container_image_id,
-        "name": container_image_name,
-        "command": container_image_command,
+        "image": container_image_name,
+        "name": container_name,
+        "command": container_command,
         "auto_remove": container_auto_remove
       }
     ).then(function (response) {
@@ -120,14 +126,14 @@ function ContainersTool(props) {
         style={{ width: "35px" }}
       />
       <div className="object-creation-form-area">
-        <input className="object-creation-item" type="text" placeholder="Image name" id="container-image-id" />
-        <input className="object-creation-item" type="text" placeholder="Container name" id="container-name" />
+        <input className="object-creation-item" type="text" placeholder="Image name" id="container-image-name" required />
+        <input className="object-creation-item" type="text" placeholder="Container name" id="container-name" required />
         <input className="object-creation-item" type="text" placeholder="Command" id="container-command" />
         <div style={{ textAlign: "center" }}>
-          <label className="object-creation-item" htmlFor="container-auto-remove">Remove container after it's done</label>
-          <input className="object-creation-item" type="checkbox" placeholder="" id="container-auto-remove" />
+          <label htmlFor="container-auto-remove">Remove container after it's done</label>
+          <input className="object-creation-item" type="checkbox" id="container-auto-remove" required />
         </div>
-        <button className="green-button" style={{ margin: "10px" }} onClick={runContainer}>Run container</button>
+        <button className="green-button" onClick={runContainer}>Run container</button>
       </div>
 
       {containersList ? (
