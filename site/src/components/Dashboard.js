@@ -35,15 +35,40 @@ function Dashboard() {
         <div className="dashboard-container">
             <div className="dashboard-inner">
                 <div className="dashboard-menu">
-                    <h3 onClick={() => handleLinkClick('images')} className="dashboard-item">Images</h3>
+                    <h3
+                        onClick={() => handleLinkClick('images')}
+                        className={`dashboard-item ${selectedMenuItem === 'images' ? 'dashboard-item-active' : ''}`}
+                    >
+                        Images
+                    </h3>
                     <hr />
-                    <h3 onClick={() => handleLinkClick('containers')} className="dashboard-item">Containers</h3>
+                    <h3
+                        onClick={() => handleLinkClick('containers')}
+                        className={`dashboard-item ${selectedMenuItem === 'containers' ? 'dashboard-item-active' : ''}`}
+                    >
+                        Containers
+                    </h3>
                     <hr />
-                    <h3 onClick={() => handleLinkClick('networks')} className="dashboard-item">Networks</h3>
+                    <h3
+                        onClick={() => handleLinkClick('networks')}
+                        className={`dashboard-item ${selectedMenuItem === 'networks' ? 'dashboard-item-active' : ''}`}
+                    >
+                        Networks
+                    </h3>
                     <hr />
-                    <h3 onClick={() => handleLinkClick('volumes')} className="dashboard-item">Volumes</h3>
+                    <h3
+                        onClick={() => handleLinkClick('volumes')}
+                        className={`dashboard-item ${selectedMenuItem === 'volumes' ? 'dashboard-item-active' : ''}`}
+                    >
+                        Volumes
+                    </h3>
                     <hr />
-                    <h3 onClick={() => handleLinkClick('information')} className="dashboard-item">Information</h3>
+                    <h3
+                        onClick={() => handleLinkClick('information')}
+                        className={`dashboard-item ${selectedMenuItem === 'information' ? 'dashboard-item-active' : ''}`}
+                    >
+                        Information
+                    </h3>
                 </div>
                 <div className="tool-area">
                     {renderSelectedComponent()}
